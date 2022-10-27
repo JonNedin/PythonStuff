@@ -1,25 +1,26 @@
 from tkinter import *
 from tkinter import messagebox
-from tkinter.messagebox import askyesno
-from PIL import ImageTk, Image
 import random
+import tkinter.font as font
 
-# Root setup
+# Root setup & Style
 root = Tk()
 root.title('Rock Paper Scissors')
-root.geometry("710x300")
-#root.iconbitmap('ImageDrop/RPS.ico')
+root.geometry("695x300")
+root.iconbitmap('ImageDrop/RPS.ico')
+root.configure(bg='#abc4ed')
+
+buttonfont = font.Font(family='Helvetica', size=20, weight='bold')
 
 # Game Variables
 possible_actions = ["Rock", "Paper", "Scissors"]
-computer_action = random.choice(possible_actions)
-
 rock = "Rock"
 paper = "Paper"
 scissors = "Scissors"
 
 # Defining button clicks
 def rockclick():
+    computer_action = random.choice(possible_actions)
     if rock == computer_action:
         result = messagebox.askyesno(
             title='Tie',
@@ -27,7 +28,6 @@ def rockclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
     elif computer_action == "Scissors":
         result = messagebox.askyesno(
             title='Winner',
@@ -35,7 +35,6 @@ def rockclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
     else:
         result = messagebox.askyesno(
             title='Loser',
@@ -43,9 +42,9 @@ def rockclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
 
 def paperclick():
+    computer_action = random.choice(possible_actions)
     if paper == computer_action:
         result = messagebox.askyesno(
             title='Tie',
@@ -53,7 +52,6 @@ def paperclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
     elif computer_action == "Rock":
         result = messagebox.askyesno(
             title='Winner',
@@ -61,7 +59,6 @@ def paperclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
     else:
         result = messagebox.askyesno(
             title='Loser',
@@ -69,9 +66,9 @@ def paperclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
 
 def scissorsclick():
+    computer_action = random.choice(possible_actions)
     if scissors == computer_action:
         result = messagebox.askyesno(
             title='Tie',
@@ -79,7 +76,6 @@ def scissorsclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
     elif computer_action == "Paper":
         result = messagebox.askyesno(
             title='Winner',
@@ -87,7 +83,6 @@ def scissorsclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
     else:
         result = messagebox.askyesno(
             title='Loser',
@@ -95,24 +90,21 @@ def scissorsclick():
             detail='Play again?')
         if not result:
             root.quit()
-        else: print("Add a restart fuction moron")
 
-# Images
-#RockImage = ImageTk.PhotoImage(Image.open("ImageDrop/Rock.png"))
-#PaperImage = ImageTk.PhotoImage(Image.open("ImageDrop/Paper.png"))
-#ScissorsImage = ImageTk.PhotoImage(Image.open("ImageDrop/Scissors.png"))
-#PickImage = [RockImage, PaperImage, ScissorsImage]
 
 # Input buttons
-RockButton = Button(root, command=rockclick, text="Rock", height=10, width=25,)
+RockButton = Button(root, command=rockclick, text="Rock", height=4, width=10, bg='#bec1c4')
+RockButton['font'] = buttonfont
 RockButton.grid(row=0, column=0, padx=25, pady=25)
-PaperButton = Button(root, command=paperclick, text="Paper", height=10, width=25)
+PaperButton = Button(root, command=paperclick, text="Paper", height=4, width=10, bg='#bec1c4')
+PaperButton['font'] = buttonfont
 PaperButton.grid(row=0, column=2, padx=25, pady=25)
-ScissorsButton = Button(root, command=scissorsclick, text="Scissors", height=10, width=25)
+ScissorsButton = Button(root, command=scissorsclick, text="Scissors", height=4, width=10, bg='#bec1c4')
 ScissorsButton.grid(row=0, column=4, padx=25, pady=25)
+ScissorsButton['font'] = buttonfont
 
 # Quit Button
-button_quit = Button(root, text="Exit", command=root.quit, height=3, width=10)
+button_quit = Button(root, text="Exit", command=root.quit, height=3, width=10, bg='black', fg='white')
 button_quit.grid(row=2, column=2)
 
 root.mainloop()
