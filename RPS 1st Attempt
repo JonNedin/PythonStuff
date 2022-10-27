@@ -6,11 +6,13 @@ import tkinter.font as font
 # Root setup & Style
 root = Tk()
 root.title('Rock Paper Scissors')
-root.geometry("695x300")
+root.geometry("767x300")
 root.iconbitmap('ImageDrop/RPS.ico')
 root.configure(bg='#abc4ed')
 
+# Font setup
 buttonfont = font.Font(family='Helvetica', size=20, weight='bold')
+titlefont = font.Font(family='Helvetica', size=10, weight='bold')
 
 # Game Variables
 possible_actions = ["Rock", "Paper", "Scissors"]
@@ -91,16 +93,20 @@ def scissorsclick():
         if not result:
             root.quit()
 
+# Game Instructions
+label = Label (root, text="Please select Rock, Paper, or Scissors to play!",bg='#abc4ed')
+label['font']=titlefont
+label.grid(row=0, column=2, padx=5, pady=5)
 
 # Input buttons
 RockButton = Button(root, command=rockclick, text="Rock", height=4, width=10, bg='#bec1c4')
 RockButton['font'] = buttonfont
-RockButton.grid(row=0, column=0, padx=25, pady=25)
+RockButton.grid(row=1, column=0, padx=25, pady=25)
 PaperButton = Button(root, command=paperclick, text="Paper", height=4, width=10, bg='#bec1c4')
 PaperButton['font'] = buttonfont
-PaperButton.grid(row=0, column=2, padx=25, pady=25)
+PaperButton.grid(row=1, column=2, padx=25, pady=25)
 ScissorsButton = Button(root, command=scissorsclick, text="Scissors", height=4, width=10, bg='#bec1c4')
-ScissorsButton.grid(row=0, column=4, padx=25, pady=25)
+ScissorsButton.grid(row=1, column=4, padx=25, pady=25)
 ScissorsButton['font'] = buttonfont
 
 # Quit Button
